@@ -90,7 +90,7 @@ RUN npm ci --include=optional --no-audit --no-fund --legacy-peer-deps --ignore-s
   && node -e "const wreq=require('wreq-js'); if(typeof wreq.createTransport!=='function') process.exit(1)"
 
 # Build configuration
-ARG OMNIROUTE_USE_TURBOPACK=1
+ARG OMNIROUTE_USE_TURBOPACK=0
 ENV OMNIROUTE_USE_TURBOPACK="${OMNIROUTE_USE_TURBOPACK}"
 
 ARG OMNIROUTE_BASE_PATH=""
@@ -99,7 +99,6 @@ ENV OMNIROUTE_BASE_PATH=$OMNIROUTE_BASE_PATH
 ARG DASHBOARD_ALLOW_EMBED=""
 ENV DASHBOARD_ALLOW_EMBED=$DASHBOARD_ALLOW_EMBED
 
-# Docker containers cannot run the MITM/Agent-Bridge stack
 ENV OMNIROUTE_MITM_STUB=1
 
 ARG OMNIROUTE_BUILD_MEMORY_MB=6144
